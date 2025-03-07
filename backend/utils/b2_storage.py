@@ -1,5 +1,5 @@
 import os
-from b2sdk.v2 import InMemoryAccountinfo, B2Api
+from b2sdk.v2 import InMemoryAccountInfo, B2Api
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -8,7 +8,7 @@ B2_APPLICATION_KEY_ID = os.getenv("B2_APPLICATION_KEY_ID")
 B2_APPLICATION_KEY = os.getenv("B2_APPLICATION_KEY")
 B2_BUCKET_NAME = os.getenv("B2_BUCKET_NAME")
 
-info  = InMemoryAccountinfo()
+info  = InMemoryAccountInfo()
 b2_api = B2Api(info)
 b2_api.authorize_account("production", B2_APPLICATION_KEY_ID, B2_APPLICATION_KEY)
 

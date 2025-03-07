@@ -1,9 +1,12 @@
 from flask import Flask, request, jsonify
 from config import Config
 import os
+from utils.b2_storage import uploadFile2B2
 
 app = Flask(__name__)
 app.config.from_object(Config)
+UPLOAD_FOLDER = "uploads"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True) 
 
 @app.route("/", methods=["GET"])
 
@@ -21,7 +24,7 @@ def upload():
             "error": "No file Provided"
         }), 400
     file = request.files["file"]
-    file_path = os.path.join("temp", file.filename)
+    file_path = os.path.join(UPLOAD_FOLDER, file.filename)
 
     file.save(file_path)
 
