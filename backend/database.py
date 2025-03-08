@@ -17,6 +17,7 @@ client = MongoClient(uri, server_api=ServerApi('1'))
 db = client[DB_NAME]
 users_collection = db["users"]
 files_collection  = db["files"]
+processed_data_collection = db["processed_data"]
 
 try:
     client.admin.command('ping')

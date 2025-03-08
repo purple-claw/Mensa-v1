@@ -3,6 +3,7 @@ from flask_jwt_extended import JWTManager
 from routes.auth_routes import auth_bp
 from routes.file_routes import file_bp
 from routes.b2_routes import b2_routes
+from routes.processed_routes import processed_bp
 from config import Config
 
 app = Flask(__name__)
@@ -14,6 +15,7 @@ jwt = JWTManager(app)
 app.register_blueprint(auth_bp, url_prefix="/auth")
 app.register_blueprint(file_bp, url_prefix="/files")
 app.register_blueprint(b2_routes)
+app.register_blueprint(processed_bp)
 
 @app.route("/", methods=["GET"])
 def home():
